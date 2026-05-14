@@ -6,10 +6,14 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   const config = new DocumentBuilder()
-    .setTitle('Books API')
-    .setDescription('API per la gestione di una libreria online')
+    .setTitle('📚 Books API')
+    .setDescription(
+      '## Libreria Online — API REST\n\n' +
+      'Gestisci il catalogo libri con operazioni complete di **creazione**, **lettura**, **aggiornamento** ed **eliminazione**.\n\n' +
+      '> Progetto realizzato con **NestJS** e **Prisma**'
+    )
     .setVersion('1.0')
-    .addTag('books')
+    .addTag('books', 'Operazioni sul catalogo libri')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
