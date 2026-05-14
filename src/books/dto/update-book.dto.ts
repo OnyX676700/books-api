@@ -1,8 +1,21 @@
-import { PartialType } from '@nestjs/mapped-types';
-import { CreateBookDto } from './create-book.dto';
+import { ApiPropertyOptional } from '@nestjs/swagger';
 
-export class UpdateBookDto extends PartialType(CreateBookDto) {
-    title?: string;
-    author?: string;
-    year?: number;
+export class UpdateBookDto {
+  @ApiPropertyOptional({
+    description: 'Titolo del libro',
+    example: 'Il nome della rosa',
+  })
+  title?: string;
+
+  @ApiPropertyOptional({
+    description: 'Nome dell\'autore',
+    example: 'Umberto Eco',
+  })
+  author?: string;
+
+  @ApiPropertyOptional({
+    description: 'Anno di pubblicazione',
+    example: 1980,
+  })
+  year?: number;
 }
