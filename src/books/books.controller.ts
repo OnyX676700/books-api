@@ -10,14 +10,20 @@ export class BooksController {
   constructor(private readonly booksService: BooksService) {}
 
   @Get()
-  @ApiOperation({ summary: 'Restituisce tutti i libri' })
+  @ApiOperation({
+    summary: '📋 Lista tutti i libri',
+    description: 'Restituisce l\'intero catalogo dei libri presenti nel database.',
+  })
   @ApiResponse({ status: 200, description: 'Lista dei libri restituita con successo.' })
   findAll() {
     return this.booksService.findAll();
   }
 
   @Get(':id')
-  @ApiOperation({ summary: 'Restituisce un libro tramite ID' })
+  @ApiOperation({
+    summary: '🔍 Cerca un libro per ID',
+    description: 'Restituisce un singolo libro corrispondente all\'ID fornito.',
+  })
   @ApiParam({ name: 'id', description: 'ID del libro', example: 1 })
   @ApiResponse({ status: 200, description: 'Libro trovato.' })
   @ApiResponse({ status: 404, description: 'Libro non trovato.' })
@@ -26,7 +32,10 @@ export class BooksController {
   }
 
   @Post()
-  @ApiOperation({ summary: 'Crea un nuovo libro' })
+  @ApiOperation({
+    summary: '➕ Aggiunge un nuovo libro',
+    description: 'Crea un nuovo libro nel catalogo con titolo, autore e anno di pubblicazione.',
+  })
   @ApiResponse({ status: 201, description: 'Libro creato con successo.' })
   @ApiResponse({ status: 400, description: 'Dati non validi.' })
   create(@Body() body: CreateBookDto) {
@@ -34,7 +43,10 @@ export class BooksController {
   }
 
   @Patch(':id')
-  @ApiOperation({ summary: 'Aggiorna un libro esistente' })
+  @ApiOperation({
+    summary: '✏️ Modifica un libro esistente',
+    description: 'Aggiorna uno o più campi di un libro già presente nel catalogo.',
+  })
   @ApiParam({ name: 'id', description: 'ID del libro', example: 1 })
   @ApiResponse({ status: 200, description: 'Libro aggiornato con successo.' })
   @ApiResponse({ status: 404, description: 'Libro non trovato.' })
@@ -43,7 +55,10 @@ export class BooksController {
   }
 
   @Delete(':id')
-  @ApiOperation({ summary: 'Elimina un libro' })
+  @ApiOperation({
+    summary: '🗑️ Elimina un libro',
+    description: 'Rimuove definitivamente un libro dal catalogo tramite il suo ID.',
+  })
   @ApiParam({ name: 'id', description: 'ID del libro', example: 1 })
   @ApiResponse({ status: 200, description: 'Libro eliminato con successo.' })
   @ApiResponse({ status: 404, description: 'Libro non trovato.' })

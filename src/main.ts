@@ -13,7 +13,7 @@ async function bootstrap() {
       '> Progetto realizzato con **NestJS** e **Prisma**'
     )
     .setVersion('1.0')
-    .addTag('books', 'Operazioni sul catalogo libri')
+    .addTag('books', '📖 Catalogo libri — operazioni CRUD complete')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
